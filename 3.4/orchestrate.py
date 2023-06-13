@@ -19,6 +19,8 @@ def read_data(filename: str) -> pd.DataFrame:
     logger = get_run_logger()
     logger.info("INFO level log message.")
     logger.info(f"Current_Directory: {os.getcwd()}")
+    logger.info(os.listdir())
+    
     """Read data into DataFrame"""
     df = pd.read_parquet(filename)
 
@@ -117,8 +119,8 @@ def train_best_model(
 
 @flow
 def main_flow(
-    train_path: str = "./prefect-mlops-zoomcamp/data/green_tripdata_2023-01.parquet",
-    val_path: str = "./prefect-mlops-zoomcamp/data/green_tripdata_2023-02.parquet",
+    train_path: str = "./data/green_tripdata_2023-01.parquet",
+    val_path: str = "./data/green_tripdata_2023-02.parquet",
 ) -> None:
     """The main training pipeline"""
 
