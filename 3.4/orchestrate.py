@@ -9,10 +9,15 @@ from sklearn.metrics import mean_squared_error
 import mlflow
 import xgboost as xgb
 from prefect import flow, task
+from prefect import get_run_logger
 
 
 @task(retries=3, retry_delay_seconds=2)
 def read_data(filename: str) -> pd.DataFrame:
+
+    logger = get_run_logger()
+    logger.info("INFO level log message.")
+    logger.info(f"Current_Directory: {os.getcwd()}")
     """Read data into DataFrame"""
     df = pd.read_parquet(filename)
 
