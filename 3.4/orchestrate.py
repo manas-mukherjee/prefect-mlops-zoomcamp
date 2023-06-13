@@ -10,6 +10,7 @@ import mlflow
 import xgboost as xgb
 from prefect import flow, task
 from prefect import get_run_logger
+import os
 
 
 @task(retries=3, retry_delay_seconds=2)
